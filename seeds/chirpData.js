@@ -1,0 +1,28 @@
+const { Chirp } = require('../models');
+
+const chirpData = [
+    {"title":"Etiam faucibus cursus urna.","contents":"Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.","member_name":"Nanci Redmond"},
+    {"title":"Nullam molestie nibh in lectus.","contents":"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.","member_name":"Janeen Dorset"},
+    {"title":"Donec ut dolor.","contents":"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.","member_name":"Janeen Dorset"},
+    {"title":"Morbi ut odio.","contents":"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.","member_name":"Rubina Handsheart"},
+    {"title":"Ut at dolor quis odio consequat varius.","contents":"In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.","member_name":"Carissa Pally"},
+    {"title":"Suspendisse accumsan tortor quis turpis.","contents":"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.","member_name":"Carissa Pally"},
+    {"title":"Suspendisse accumsan tortor quis turpis.","contents":"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.","member_name":"Carissa Pally"},
+    {"title":"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.","contents":"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.","member_name":"Carissa Pally"},
+    {"title":"Aenean lectus.","contents":"Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.","member_name":"Nanci Redmond"},
+    {"title":"Suspendisse ornare consequat lectus.","contents":"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.","member_name":"Carissa Pally"},
+    {"title":"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.","contents":"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.","member_name":"Carissa Pally"},
+    {"title":"Fusce posuere felis sed lacus.","contents":"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.","member_name":"Eamon Dislee"},
+    {"title":"In hac habitasse platea dictumst.","contents":"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.","member_name":"Carissa Pally"},
+    {"title":"Nam dui.","contents":"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.","member_name":"Eamon Dislee"},
+    {"title":"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.","contents":"Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.","member_name":"Eamon Dislee"},
+    {"title":"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.","contents":"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.","member_name":"Eamon Dislee"},
+    {"title":"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.","contents":"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.","member_name":"Eamon Dislee"},
+    {"title":"Nunc purus.","contents":"Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.","member_name":"Waverly Absolom"},
+    {"title":"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.","contents":"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.","member_name":"Nanci Redmond"},
+    {"title":"Maecenas rhoncus aliquam lacus.","contents":"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.","member_name":"Waverly Absolom"}
+]
+
+const seedChirps = () => Chirp.bulkCreate(chirpData);
+
+module.exports = seedChirps;
