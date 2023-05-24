@@ -1,0 +1,9 @@
+{{#each chirps as |chirp| }}
+<div class="card-header">
+  <h5>{{this.title}}</h5>
+  <p>Created on {{this.date_created}} by {{this.member_name}}</p>
+</div>
+<div>
+  {{this.contents}}
+</div>
+{{/each}}
