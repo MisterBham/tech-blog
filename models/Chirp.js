@@ -54,7 +54,7 @@ Chirp.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'chirp',
+        modelName: 'chirps',
         }
     );
     
