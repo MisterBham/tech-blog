@@ -21,11 +21,11 @@ const hbs = exphbs.create({ helpers });
 // configure session object with store
 const sess = {
     secret: 'you shouldnt know',
-    cookie: {},
+    cookie: { maxAge: 60 * 60 * 1000 },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize
+        db: sequelize,
     })
 };
 

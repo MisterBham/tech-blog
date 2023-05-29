@@ -7,8 +7,11 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
 
   await seedMembers();
+    console.log('---------- \n MEMBERS seeded... \n ----------');
   await seedChirps();
+    console.log('---------- \n CHIRPS seeded... \n ----------');
   await seedComments();
+  console.log('---------- \n COMMENTS seeded... \n ----------');
 
   process.exit(0);
 };

@@ -1,47 +1,67 @@
 const router = require('express').Router();
-// const { User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Chirp, Comment } = require('../models');
 
-// , withAuth - Prevent non logged in users from viewing the homepage
 router.get('/', async (req, res) => {
   try {
     const chirpData = await Chirp.findAll({
-      include: [{
-        model: User,
-        attributes: { exclude: ['password', 'email'] },
-    }, 
-    {
-        model: Comment,
-        include: {
-            model: User,
-            attributes: ['id', 'username'],
-        }
-    }],
-      order: [['date_created', 'DESC']]
-    })
-
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render('homepage', {
-      users,
-      // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
-      member_name: req.session.member_name,
+      include: [
+        {
+          model: Comment,
+          attributes: ['contents', 'chirp_id', 'member_id'],
+        },
+      ],
     });
-  } catch (err) {
+
+    const chirps = chirpData.map((chirp) => 
+    chirp.get({ plain: true })
+    );
+    console.log(chirps);
+    // Send over the 'loggedIn' session variable to the 'homepage' template
+    res.render('homepage', {
+      chirps,
+      loggedIn: req.session.loggedIn,
+    });
+  } 
+  catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// router.get('/login', (req, res) => {
-//   // If a session exists, redirect the request to the homepage
-//   if (req.session.logged_in) {
-//     res.redirect('/');
-//     return;
-//   }
+router.get('/chirp/:id', async (req, res) => {
+  try {
+    const chirpData = await Chirp.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: ['contents', 'chirp_id', 'member_id'],
+        },
+      ],
+    });
+    const chirp = chirpData.get({ plain: true })
 
-//   res.render('login');
-// });
+    console.log(chirpData);
+    // Send over the 'loggedIn' session variable to the 'homepage' template
+    res.render('chirp-detail', {
+      chirp,
+      loggedIn: req.session.loggedIn,
+    });
+  } 
+  catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect('/chirp');
+    return;
+  }
+
+  res.render('login');
+});
 
 module.exports = router;
