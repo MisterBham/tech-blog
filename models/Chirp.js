@@ -1,12 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Chirp extends Model {
-    checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-    }
-}
+class Chirp extends Model {}
 
 Chirp.init(
     {
@@ -30,12 +26,12 @@ Chirp.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        member_name: {
+        member_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'member',
-                key: 'name',
+                key: 'id',
             },
         },
     },
@@ -54,7 +50,7 @@ Chirp.init(
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'chirps',
+        modelName: 'chirp',
         }
     );
     

@@ -1,0 +1,16 @@
+<div class="card text-dark shadow p-3 mb-5 bg-white rounded">
+    <div class="card-header">
+        <a href="/chirp/{{chirp.id}}">
+        <h5>{{chirp.title}}</h5>
+        </a>
+        <p>Created on {{chirp.date_created}} by {{chirp.member_name}}</p>
+    </div>
+    <div>
+    {{chirp.contents}}
+    </div>
+</div>
+<textarea name="comments-area" id="comments-area" cols="30" rows="10" class="w-100"></textarea>
+<button>Create new comment</button>
+{{#each chirp.comments as |comment|}}
+    <p>{{this.contents}}</p>
+{{/each}}

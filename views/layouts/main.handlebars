@@ -4,24 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  {{!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"> --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
   <title>The Tech Blog</title>
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>The Tech Blog</h1>
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
-  </header>
+
+  <nav class="display-flex justify-space-between p-2">
+    <ul class="display-flex list-group p-0 m-0">
+      <li class="list-group-item fade active m-3" aria-current="true">Home</li>
+      <li class="list-group-item fade m-3">Dashboard</li>
+      {{#if loggedIn}}
+        <li class="list-group-item fade m-3">Logout</li>
+      {{else}}
+      <a href="/login">
+        <li class="list-group-item fade m-3">Login</li>
+      </a>
+      {{/if}}
+    </ul>
+    <h1 class="m-3">The Tech Blog</h1>
+  </nav>
+
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
