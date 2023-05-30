@@ -1,23 +1,39 @@
 const router = require('express').Router();
-const { Chirp, Comment } = require('../models');
+const { Chirp, Comment, Member } = require('../models');
 
 router.get('/', async (req, res) => {
+  if(req.session.loggedIn) {
+    try {
+      // Send over the 'loggedIn' session variable to the 'homepage' template
+      res.render('dashboard', {
+        loggedIn: req.session.loggedIn,
+      });
+    } 
+    catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  } else {
+    res.render('homepage');
+  }
+});
+
+router.get('/dashboard', async (req, res) => {
   try {
     const chirpData = await Chirp.findAll({
       include: [
         {
-          model: Comment,
-          attributes: ['contents', 'chirp_id', 'member_id'],
+          model: Member,
+          attributes: ['name'],
         },
       ],
+      order: [['date_created', 'DESC']]
     });
 
-    const chirps = chirpData.map((chirp) => 
-    chirp.get({ plain: true })
-    );
-    console.log(chirps);
+    const chirps = chirpData.map((chirp) => chirp.get({ plain: true }));
+    
     // Send over the 'loggedIn' session variable to the 'homepage' template
-    res.render('homepage', {
+    res.render('dashboard', {
       chirps,
       loggedIn: req.session.loggedIn,
     });
@@ -33,14 +49,22 @@ router.get('/chirp/:id', async (req, res) => {
     const chirpData = await Chirp.findByPk(req.params.id, {
       include: [
         {
+          model: Member,
+          attributes: ['name'],
+        },
+        {
           model: Comment,
-          attributes: ['contents', 'chirp_id', 'member_id'],
+          include: [
+            {
+              model: Member,
+              attributes: ['id','name']
+            }
+          ]
         },
       ],
     });
     const chirp = chirpData.get({ plain: true })
 
-    console.log(chirpData);
     // Send over the 'loggedIn' session variable to the 'homepage' template
     res.render('chirp-detail', {
       chirp,
@@ -53,15 +77,20 @@ router.get('/chirp/:id', async (req, res) => {
   }
 });
 
+// router.get('/login', (req, res) => {
+//   // If the user is already logged in, redirect the request to another route
+//   if (req.session.loggedIn) {
+//     res.redirect('/dashboard');
+//     return;
+//   } else {
+//     res.render('login');
+//   }
+// });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.loggedIn) {
-    res.redirect('/chirp');
-    return;
-  }
-
-  res.render('login');
-});
+// router.post('/logout', (req, res) => {
+//   req.session.destroy(() => {
+//     res.render('logout');
+//   });
+// });
 
 module.exports = router;

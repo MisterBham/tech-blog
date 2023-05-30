@@ -3,12 +3,12 @@ const Chirp = require('./Chirp');
 const Comment = require('./Comment');
 
 Member.hasMany(Chirp, {
-    foreignKey: 'member_name',
+    foreignKey: 'member_id',
     onDelete: 'CASCADE',
 });
 
 Chirp.belongsTo(Member, {
-    foreignKey: 'member_name',
+    foreignKey: 'member_id',
 });
 
 Chirp.hasMany(Comment, {

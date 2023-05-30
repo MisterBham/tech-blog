@@ -1,17 +1,51 @@
-<h2>Login</h2>
+<div class="login container-fluid mx-auto" style="width:50%;">
+    <h3>Login</h3>
+    
+    <form class="login-form">
+      <div class="form-group">
+        <label for="loginEmail">email:</label>
+        <input class="form-input" type="text" id="email-login" />
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">password:</label>
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="btn" type="submit">login</button>
+      </div>
+    </form>
+    <br>
+    <br>
+      <hr>
+    <br>
+    <br>
+      <h3>Sign Up</h3>
+      <form>
+          <div class="form-group">
+              <label for="signupEmail">Email address</label>
+              <input type="email" class="form-input" id="signupEmail">
+              <small id="emailHelp" class="form-text text-muted">Your email will never be shared!</small>
+          </div>
+          <div class="form-group">
+              <label for="signupUsername">Username</label>
+              <input type="text" class="form-input" id="signupUsername">
+          </div>
+          <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <input type="password" class="form-input" id="signupPassword">
+          </div>
+          <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" class="form-input" id="confirmPassword">
+          </div>
+          <button type="submit" class="btn">Create Account</button>
+      </form>
 
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
-
-<script src="/js/login.js"></script>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+  
+  <script src="/js/login.js"></script>
+</div>

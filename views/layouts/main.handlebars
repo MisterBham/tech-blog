@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"> --}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
@@ -17,10 +16,17 @@
 
   <nav class="display-flex justify-space-between p-2">
     <ul class="display-flex list-group p-0 m-0">
-      <li class="list-group-item fade active m-3" aria-current="true">Home</li>
-      <li class="list-group-item fade m-3">Dashboard</li>
+      <a href="/">
+        <li class="list-group-item fade active m-3" aria-current="true">Home</li>
+      </a>
+      <a href="/dashboard">
+        <li class="list-group-item fade m-3">Dashboard</li>
+      </a>
       {{#if loggedIn}}
-        <li class="list-group-item fade m-3">Logout</li>
+        <a href="/logout">
+          <li id="logout" class="list-group-item fade m-3">Logout</li>
+        </a>
+        <script src="/js/logout.js"></script>
       {{else}}
       <a href="/login">
         <li class="list-group-item fade m-3">Login</li>
@@ -36,11 +42,6 @@
   <footer>
       
   </footer>
-
-  <!-- Only include the logout script if the user is logged in -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
 </body>
 
 </html>

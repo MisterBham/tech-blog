@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+// route is /api/comment
 router.get('/', async (req, res) => {
     try {
         const commentData = await Comment.findAll()
