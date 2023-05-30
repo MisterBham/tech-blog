@@ -1,15 +1,7 @@
-{{#each chirps as |chirp| }}
-
-<div class="card text-dark shadow p-3 mb-5 bg-white rounded">
-    <div class="card-header">
-      <a href="/chirp/{{this.id}}">
-        <h5>{{this.title}}</h5>
-      </a>
-      <p>Created on {{this.date_created}} by {{this.member_name}}</p>
-  </div>
-    <div>
-    {{this.contents}}
-  </div>
+<br>
+<br>
+<br>
+<div class="homepage container-fluid text-center mt-5" style="width: 100%;">
+<p>You've made it! Please create a new post or view the dashboard.</p>
+      <button type="button" class="btn btn-lg">+New Post</button>
 </div>
-
-{{/each}}

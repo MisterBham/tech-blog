@@ -1,0 +1,17 @@
+{{#each chirps as |chirp| }}
+
+<div class="card">
+    <div class="card-header">
+        <a href="/chirp/{{this.id}}">
+        <h5 class="mt-2">{{this.title}}</h5>
+        </a>
+        <span>Created on {{this.date_created}} by {{this.member.name}}</span>
+    </div>
+    <div class="card-body">
+    {{this.contents}}
+    </div>
+</div>
+<br>
+
+{{/each}}
+

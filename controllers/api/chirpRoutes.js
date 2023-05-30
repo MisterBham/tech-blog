@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Chirp } = require('../../models');
 
+// route is /api/chirp
 router.get('/', async (req, res) => {
     try {
         const chirpData = await Chirp.findAll()

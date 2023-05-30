@@ -1,16 +1,39 @@
-<div class="card text-dark shadow p-3 mb-5 bg-white rounded">
+<textarea name="comments-area" id="comments-area" cols="10" rows="5" class="w-100"></textarea>
+    <div class="container-fluid text-center" style="width: 100%;">
+        <button class="btn">Create new comment</button>
+    </div>
+    <br>
+    <br>
+
+<div class="card">
     <div class="card-header">
         <a href="/chirp/{{chirp.id}}">
-        <h5>{{chirp.title}}</h5>
+        <h5 class="mt-2">{{chirp.title}}</h5>
         </a>
-        <p>Created on {{chirp.date_created}} by {{chirp.member_name}}</p>
+        <span class="">Created on {{chirp.date_created}} by {{chirp.member.name}}</span>
     </div>
-    <div>
+    <div class="card-body">
     {{chirp.contents}}
     </div>
 </div>
-<textarea name="comments-area" id="comments-area" cols="30" rows="10" class="w-100"></textarea>
-<button>Create new comment</button>
-{{#each chirp.comments as |comment|}}
-    <p>{{this.contents}}</p>
-{{/each}}
+<br>
+
+<h2>Comments</h2>
+<hr>
+    {{#if chirp.comments}}
+        {{#each chirp.comments as |comment|}}
+            <div class="card comment-container mx-auto">
+                <div class="card-header comment">
+                    {{this.member.name}} - {{this.date_created}}
+                </div>
+                <div class="card-body">
+                    <p>{{this.contents}}</p>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+    <div class="comment-container mx-auto text-center">
+        <p>This chirp has no comments, be the first one!</p>
+    </div>
+    {{/if}}
+
