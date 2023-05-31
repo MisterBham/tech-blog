@@ -5,9 +5,7 @@ router.get('/', async (req, res) => {
   if(req.session.loggedIn) {
     try {
       // Send over the 'loggedIn' session variable to the 'homepage' template
-      res.render('dashboard', {
-        loggedIn: req.session.loggedIn,
-      });
+      res.redirect('/dashboard');
     } 
     catch (err) {
       console.log(err);
@@ -77,20 +75,24 @@ router.get('/chirp/:id', async (req, res) => {
   }
 });
 
-// router.get('/login', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.loggedIn) {
-//     res.redirect('/dashboard');
-//     return;
-//   } else {
-//     res.render('login');
-//   }
-// });
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect('/dashboard');
+    return;
+  } else {
+    res.render('login');
+    }
+  });
 
-// router.post('/logout', (req, res) => {
-//   req.session.destroy(() => {
-//     res.render('logout');
-//   });
-// });
+router.get('/logout', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.render('logout');
+    return;
+  } else {
+    res.render('login');
+  }
+});
 
 module.exports = router;
