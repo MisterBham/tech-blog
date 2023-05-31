@@ -67,3 +67,7 @@ body {
 .login label {
     color: var(--color-palette-1);
 }
+
+#check-icon .btn {
+    background-color: var(--color-palette-5);
+}
