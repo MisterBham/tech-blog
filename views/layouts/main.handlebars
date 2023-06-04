@@ -7,34 +7,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <meta name="description" content="The Tech Blog, where technology meets social media.">
   <title>The Tech Blog</title>
 </head>
 
 <body>
 
   <nav class="display-flex justify-space-between p-2">
-    <ul class="display-flex list-group p-0 m-0">
+    <ul class="display-flex flex-row list-group p-0 m-0">
       <a href="/">
-        <li class="list-group-item fade active m-3" aria-current="true">Home</li>
+        <li class="list-group-item m-3" aria-current="true">Home</li>
       </a>
       <a href="/dashboard">
-        <li class="list-group-item fade m-3">Dashboard</li>
+        <li class="list-group-item m-3">Dashboard</li>
       </a>
       {{#if loggedIn}}
-          <a href="">
-            <li id="logout" class="list-group-item fade m-3">Logout</li>
+          <a href="/logout">
+            <li id="logout" class="list-group-item m-3">Logout</li>
           </a>
         <script src="/js/logout.js"></script>
       {{else}}
       <a href="/login">
-        <li class="list-group-item fade m-3">Login</li>
+        <li class="list-group-item m-3">Login</li>
       </a>
       {{/if}}
     </ul>
     <h1 class="m-3">The Tech Blog</h1>
   </nav>
+
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
 
   <main class="container container-fluid mt-5">
     {{{ body }}}

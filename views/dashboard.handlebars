@@ -5,7 +5,7 @@
         <a href="/chirp/{{this.id}}">
         <h5 class="mt-2">{{this.title}}</h5>
         </a>
-        <span>Created on {{this.date_created}} by {{this.member.name}}</span>
+        <span>Created on {{this.date_created}} by {{this.member.username}}</span>
     </div>
     <div class="card-body">
     {{this.contents}}
@@ -14,14 +14,3 @@
 <br>
 
 {{/each}}
-
-{{!-- positioned fixed --}}
-<div id="check-icon fixed-bottom">
-    <a href="/create" class="btn btn-lg">
-        <i class="bi-plus-circle-dotted" style="font-size: 3rem; color: var(--color-palette-5);"></i>
-    </a>
-
-</div>
-
-<br>
-<br>

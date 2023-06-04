@@ -1,51 +1,53 @@
-<div class="login container-fluid mx-auto" style="width:50%;">
+<div class="login container-fluid mx-auto" style="width:60%;">
     <h3>Login</h3>
     
     <form class="login-form">
+{{!-- Login form --}}
       <div class="form-group">
-        <label for="loginEmail">email:</label>
+        <label for="loginEmail">Email:</label>
         <input class="form-input" type="text" id="email-login" />
       </div>
       <div class="form-group">
-        <label for="loginPassword">password:</label>
+        <label for="loginPassword">Password:</label>
         <input class="form-input" type="password" id="password-login" />
       </div>
       <div class="form-group">
-        <button class="btn" type="submit">login</button>
+        <button id="loginBtn" class="btn" type="submit">login</button>
       </div>
     </form>
     <br>
     <br>
       <hr>
-    <br>
-    <br>
-      <h3>Sign Up</h3>
-      <form>
-          <div class="form-group">
-              <label for="signupEmail">Email address</label>
-              <input type="email" class="form-input" id="signupEmail">
-              <small id="emailHelp" class="form-text text-muted">Your email will never be shared!</small>
-          </div>
-          <div class="form-group">
-              <label for="signupUsername">Username</label>
-              <input type="text" class="form-input" id="signupUsername">
-          </div>
-          <div class="form-group">
-              <label for="signupPassword">Password</label>
-              <input type="password" class="form-input" id="signupPassword">
-          </div>
-          <div class="form-group">
-              <label for="confirmPassword">Confirm Password</label>
-              <input type="password" class="form-input" id="confirmPassword">
-          </div>
-          <button type="submit" class="btn">Create Account</button>
-      </form>
-
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+{{!-- Sign up form --}}
+<br>
+<br>
+    <h3>Sign Up</h3>
+    <form class="signup-form">
+        <div class="form-group">
+            <label for="signupEmail">Email address</label>
+            <input type="email" class="form-input" id="signupEmail">
+            <small id="emailHelp" class="form-text text-muted">Your email will never be shared!</small>
+        </div>
+        <div class="form-group">
+            <label for="signupUsername">Username</label>
+            <input type="text" class="form-input" id="signupUsername">
+        </div>
+        <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" class="form-input" id="signupPassword">
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-input" id="confirmPassword">
+        </div>
+        <button id="signupBtn" class="btn">Create Account</button>
+    </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
   
   <script src="/js/login.js"></script>
+
 </div>

@@ -2,18 +2,9 @@ const router = require('express').Router();
 const { Chirp, Comment, Member } = require('../models');
 
 router.get('/', async (req, res) => {
-  if(req.session.loggedIn) {
-    try {
-      // Send over the 'loggedIn' session variable to the 'homepage' template
-      res.redirect('/dashboard');
-    } 
-    catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  } else {
-    res.render('homepage');
-  }
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 router.get('/dashboard', async (req, res) => {
@@ -22,7 +13,7 @@ router.get('/dashboard', async (req, res) => {
       include: [
         {
           model: Member,
-          attributes: ['name'],
+          attributes: ['username'],
         },
       ],
       order: [['date_created', 'DESC']]
@@ -30,7 +21,6 @@ router.get('/dashboard', async (req, res) => {
 
     const chirps = chirpData.map((chirp) => chirp.get({ plain: true }));
     
-    // Send over the 'loggedIn' session variable to the 'homepage' template
     res.render('dashboard', {
       chirps,
       loggedIn: req.session.loggedIn,
@@ -48,14 +38,14 @@ router.get('/chirp/:id', async (req, res) => {
       include: [
         {
           model: Member,
-          attributes: ['name'],
+          attributes: ['username'],
         },
         {
           model: Comment,
           include: [
             {
               model: Member,
-              attributes: ['id','name']
+              attributes: ['id','username']
             }
           ]
         },
@@ -63,7 +53,6 @@ router.get('/chirp/:id', async (req, res) => {
     });
     const chirp = chirpData.get({ plain: true })
 
-    // Send over the 'loggedIn' session variable to the 'homepage' template
     res.render('chirp-detail', {
       chirp,
       loggedIn: req.session.loggedIn,
@@ -75,10 +64,21 @@ router.get('/chirp/:id', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+router.get('/newChirp', async (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/dashboard');
+    res.render('newChirp', {
+      loggedIn: req.session.loggedIn,
+    });
+  } else {
+    res.render('login');
+    }
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/dashboard', {
+      loggedIn: req.session.loggedIn,
+    });
     return;
   } else {
     res.render('login');
@@ -86,13 +86,7 @@ router.get('/login', (req, res) => {
   });
 
 router.get('/logout', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.loggedIn) {
-    res.render('logout');
-    return;
-  } else {
-    res.render('login');
-  }
+  res.render('logout')
 });
 
 module.exports = router;
