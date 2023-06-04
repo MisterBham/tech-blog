@@ -16,7 +16,7 @@ Member.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -38,13 +38,13 @@ Member.init(
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+      beforeCreate: async (newMemberData) => {
+        newMemberData.password = await bcrypt.hash(newMemberData.password, 10);
+        return newMemberData;
       },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
+      beforeUpdate: async (updatedMemberData) => {
+        updatedMemberData.password = await bcrypt.hash(updatedMemberData.password, 10);
+        return updatedMemberData;
       },
     },
     sequelize,
