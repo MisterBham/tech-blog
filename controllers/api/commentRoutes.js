@@ -12,4 +12,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+// POST route is /api/comment
+router.post('/', async (req, res) => {
+    try {
+        const commentData = await Comment.create({
+            contents: req.body.contents,
+            chirp_id: req.body.chirp_id,
+            member_id: req.body.member_id
+        });
+
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
 module.exports = router;

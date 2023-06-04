@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
         const memberData = await Member.findAll()
         req.session.save(() => {
             req.session.member_id = memberData.id;
-            // req.session.loggedIn = true;
 
         res.status(200).json(memberData);
     })

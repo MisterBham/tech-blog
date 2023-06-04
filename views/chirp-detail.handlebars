@@ -1,9 +1,20 @@
-<textarea name="comments-area" id="comments-area" cols="10" rows="5" class="w-100"></textarea>
+{{#if loggedIn}}
     <div class="container-fluid text-center" style="width: 100%;">
-        <button class="btn">Create new comment</button>
+        <textarea name="comments-area" id="comments-area" cols="10" rows="5" class="w-100"></textarea>
+        <button id="newcommentBtn" class="btn" type="submit">Create new comment</button>
     </div>
     <br>
     <br>
+{{else}}
+    <div class="text-center">
+        <p>You must login to make comments!</p>
+    </div>
+    <br>
+    <br>
+    <br>
+{{/if}}
+
+
 
 <div class="card">
     <div class="card-header">
@@ -36,4 +47,6 @@
         <p>This chirp has no comments, be the first one!</p>
     </div>
     {{/if}}
+
+<script src="/js/comment.js"></script>
 
