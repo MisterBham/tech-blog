@@ -92,3 +92,12 @@ body {
 .login small {
     color: var(--color-palette-3) !important;;
 }
+
+#deleteBtn {
+    background-color: #7A1712;
+}
+
+#deleteBtn:hover {
+    background-color: var(--color-palette-4);
+    color: #7A1712;
+}

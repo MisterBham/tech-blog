@@ -1,9 +1,9 @@
 async function commentHandler(event) {
     event.preventDefault();
 
-    const contents = document.getElementById('comments-area').ariaValueMax.trim();
+    const contents = document.getElementById('comments-area').value.trim();
+    const url = window.location.toString().split('/');
     const chirp_id = url[url.length -1];
-    const member_id = req.session.id;
 
     if (contents) {
         const response = await fetch('/api/comment', {
@@ -11,7 +11,6 @@ async function commentHandler(event) {
             body: JSON.stringify({
                 contents,
                 chirp_id,
-                member_id
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -28,4 +27,5 @@ async function commentHandler(event) {
 
 document
     .getElementById('newcommentBtn')
-    .addEventListener('submit', commentHandler);
+    .addEventListener('click', commentHandler);
+

@@ -14,8 +14,6 @@
     <br>
 {{/if}}
 
-
-
 <div class="card">
     <div class="card-header">
         <a href="/chirp/{{chirp.id}}">
@@ -35,7 +33,7 @@
         {{#each chirp.comments as |comment|}}
             <div class="card comment-container mx-auto">
                 <div class="card-header comment">
-                    {{this.member.name}} - {{this.date_created}}
+                    {{this.member.username}} - {{this.date_created}}
                 </div>
                 <div class="card-body">
                     <p>{{this.contents}}</p>

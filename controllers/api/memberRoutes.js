@@ -62,6 +62,8 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.member_id = memberData.id;
+            req.session.username = memberData.username;
 
             res
                 .status(200)
