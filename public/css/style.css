@@ -29,6 +29,11 @@ nav ul li {
     border: none !important;
 }
 
+nav ul li:hover {
+    color: var(--color-palette-5) !important;
+    border: none !important;
+}
+
 nav h1 {
     color: var(--color-palette-4)
 }
@@ -74,6 +79,11 @@ body {
     color: var(--color-palette-4);
 }
 
+.btn:hover {
+    background-color: var(--color-palette-4);
+    color: var(--color-palette-3);
+}
+
 .login h3 {
     color: var(--color-palette-5);
 }
@@ -81,4 +91,13 @@ body {
 .login label,
 .login small {
     color: var(--color-palette-3) !important;;
+}
+
+#deleteBtn {
+    background-color: #7A1712;
+}
+
+#deleteBtn:hover {
+    background-color: var(--color-palette-4);
+    color: #7A1712;
 }

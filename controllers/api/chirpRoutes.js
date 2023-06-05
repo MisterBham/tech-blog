@@ -27,4 +27,40 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        const newChirp = await Chirp.update(req.body, {
+            where: {
+                id: req.params.id,
+            },
+        });
+        res.status(200).json(newChirp);
+        console.log('Chirp successfully edited!')
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const chirpData = await Chirp.destroy({
+            where: {
+                id: req.params.id,
+                member_id: req.session.member_id,
+            },
+        });
+
+        if (!chirpData) {
+            res.status(404).json({ message: "No chirp found with this ID!" });
+            return;
+        }
+        res.status(200).json(chirpData);
+        console.log('Chirp successfully deleted.')
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
 module.exports = router;

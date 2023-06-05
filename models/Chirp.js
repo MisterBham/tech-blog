@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-// const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Chirp extends Model {}
@@ -28,7 +27,6 @@ Chirp.init(
         },
         member_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'member',
                 key: 'id',
@@ -36,16 +34,6 @@ Chirp.init(
         },
     },
     {
-        hooks: {
-            beforeCreate: async (newBlogData) => {
-            newBlogData.password = await bcrypt.hash(newBlogData.password, 10);
-            return newBlogData;
-            },
-            beforeUpdate: async (updatedBlogData) => {
-            updatedBlogData.password = await bcrypt.hash(updatedBlogData.password, 10);
-            return updatedBlogDBlog;
-            },
-        },
         sequelize,
         timestamps: true,
         freezeTableName: true,
