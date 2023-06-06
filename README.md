@@ -63,4 +63,8 @@ Should you have any further questions, please reach the developer at: misterbham
 GitHub: <a href="https://github.com/MisterBham">MisterBham</a> </br> 
 
 ### Screenshots
+<img src="./images/tech-blog-home.png" width=75% height=75%> <br> 
+<img src="./images/tech-blog-login.png" width=75% height=75%> <br> 
+<img src="./images/tech-blog-chirpwithcomments.png" width=75% height=75%> <br> 
+<img src="./images/tech-blog-editchirp.png" width=75% height=75%> <br> 
 
