@@ -1,16 +1,17 @@
-{{#if chirps}}
-<div class="text-center">
-    <p>MY CHIRPS <br> You can edit and delete from here.</p>
+    <div class="text-center">
+        <button type="button" id="chirpBtn" class="btn btn-lg">+New Chirp</button>
     </div>
     <br>
-    
+<h2>My Chirps</h2>
+<hr>
+{{#if chirps}}
     {{#each chirps as |chirp| }}
     <div class="card">
         <div class="card-header">
             <a href="/editChirp/{{this.id}}">
             <h5 class="mt-2">{{this.title}}</h5>
             </a>
-            <span>Created on {{this.date_created}} by {{this.member.username}}</span>
+            <span>Created on {{clean_date this.date_created}} by {{this.member.username}}</span>
         </div>
         <div class="card-body">
         {{this.contents}}
@@ -23,7 +24,6 @@
 <br>
 <div class="homepage container-fluid text-center mt-5" style="width: 100%;">
     <p>Create a new chirp or view 'Home' to see the feed.</p>
-    <button type="button" id="chirpBtn" class="btn btn-lg">+New Chirp</button>
 </div>
 
 <script src="/js/create.js"></script>

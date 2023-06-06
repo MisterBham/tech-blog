@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
         const newChirp = await Chirp.create({
             title: req.body.title,
             contents: req.body.contents,
-            member_id: req.session.member_id
+            // loggedIn: req.session.loggedIn,
+            // member_id: req.session.member_id,
+            // username: req.session.username,
         });
         res.status(200).json(newChirp);
         console.log('New chirp posted!')
@@ -33,6 +35,9 @@ router.put('/:id', async (req, res) => {
             where: {
                 id: req.params.id,
             },
+            // loggedIn: req.session.loggedIn,
+            // member_id: req.session.member_id,
+            // username: req.session.username,
         });
         res.status(200).json(newChirp);
         console.log('Chirp successfully edited!')
@@ -49,6 +54,9 @@ router.delete('/:id', async (req, res) => {
                 id: req.params.id,
                 member_id: req.session.member_id,
             },
+            // loggedIn: req.session.loggedIn,
+            // member_id: req.session.member_id,
+            // username: req.session.username,
         });
 
         if (!chirpData) {

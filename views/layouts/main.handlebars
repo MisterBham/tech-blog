@@ -31,7 +31,7 @@
         </li>
         {{#if loggedIn}}
         <li class="nav-item">
-          <a class="nav-link ms-3" href="/logout">Logout</a>
+          <a id="logout" class="nav-link ms-3" href="/logout">Logout</a>
         </li>
         <script src="/js/logout.js"></script>
         {{else}}
@@ -47,7 +47,6 @@
   </nav>
 
   <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/utils/helpers.js"></script>
 
   <main class="container container-fluid mt-5">
     {{{ body }}}

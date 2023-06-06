@@ -12,23 +12,18 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST route is /api/comment
+// POST route to /api/comment
 router.post('/', async (req, res) => {
     try {
         const commentData = await Comment.create({
-            loggedIn: req.session.loggedIn,
             contents: req.body.contents,
             chirp_id: req.body.chirp_id,
+            loggedIn: req.session.loggedIn,
             member_id: req.session.member_id,
             username: req.session.username,
         });
-        req.session.save(() => {
-            req.session.member_id = commentData.id;
-            req.session.username = commentData.username;
-            req.session.loggedIn = true;
-
-            res.status(200).json(commentData);
-        });
+        res.status(200).json(commentData);
+        console.log('New comment posted!')
     } catch (err) {
         res.status(500).json(err);
         console.log(err);

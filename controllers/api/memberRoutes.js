@@ -16,27 +16,27 @@ router.get('/', async (req, res) => {
     }
 });
 
-    // POST route is /api/member/
-    router.post('/', async (req, res) => {
-        try {
-            const memberData = await Member.create({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password,
-            });
-    
-            req.session.save(() => {
-                req.session.member_id = memberData.id;
-                req.session.username = memberData.username;
-                req.session.loggedIn = true;
-    
-                res.status(200).json(memberData);
-            });
-        } catch (err) {
-            console.log(err);
-            res.status(500).json(err);
-        }
-    });
+// POST route is /api/member/
+router.post('/', async (req, res) => {
+    try {
+        const memberData = await Member.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        });
+
+        req.session.save(() => {
+            req.session.member_id = memberData.id;
+            req.session.username = memberData.username;
+            req.session.loggedIn = true;
+
+            res.status(200).json(memberData);
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
     
 
 // route is /api/member/login
