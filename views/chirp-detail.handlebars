@@ -19,7 +19,7 @@
         <a href="/chirp/{{chirp.id}}">
         <h5 class="mt-2">{{chirp.title}}</h5>
         </a>
-        <span class="">Created on {{chirp.date_created}} by {{chirp.member.username}}</span>
+        <span class="">Created on {{clean_date chirp.date_created}} by {{chirp.member.username}}</span>
     </div>
     <div class="card-body">
     {{chirp.contents}}
@@ -33,7 +33,7 @@
         {{#each chirp.comments as |comment|}}
             <div class="card comment-container mx-auto">
                 <div class="card-header comment">
-                    {{this.member.username}} - {{this.date_created}}
+                    {{this.member.username}} - {{clean_date this.date_created}}
                 </div>
                 <div class="card-body">
                     <p>{{this.contents}}</p>
