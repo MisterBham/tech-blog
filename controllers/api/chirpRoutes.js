@@ -17,9 +17,9 @@ router.post('/', async (req, res) => {
         const newChirp = await Chirp.create({
             title: req.body.title,
             contents: req.body.contents,
-            // loggedIn: req.session.loggedIn,
-            // member_id: req.session.member_id,
-            // username: req.session.username,
+            loggedIn: req.session.loggedIn,
+            member_id: req.session.member_id,
+            username: req.session.username,
         });
         res.status(200).json(newChirp);
         console.log('New chirp posted!')
