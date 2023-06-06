@@ -32,7 +32,7 @@ CMS styled blogsite where developers can read programming articles and contribut
 1. Project is setup to use an .env file to protect sensitive database usernames and passwords. Using the supplied .env.EXAMPLE file in root directory, rename file to be that of .env (removing .EXAMPLE) and fill in required variables of DB_USER and DB_PASSWORD with your own mySQL username and password.
 2. Run mySQL in root folder. `source db/schema.sql` to setup working database.
 3. `npm install` into root directory, to install required application dependencies.
-    -   [optional] npm run seed to seed database with pre-supplied data.
+    -   [optional] `npm run seed` to seed database with pre-supplied data.
 4. `npm start` to start application.
 
 ### Usage
