@@ -42,9 +42,9 @@ Available npm scripts:
 - seed
 
 Available /api routes:
-/chirp
-/comment
-/member
+- /chirp
+- /comment
+- /member
 
 Cloud hosted full-stack pre-seeded application can be used via https://technologyblog.herokuapp.com/.
 
