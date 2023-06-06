@@ -46,11 +46,10 @@ Available /api routes:
 /comment
 /member
 
-Cloud hosted full-stack application can be used via https://technologyblog.herokuapp.com/.
+Cloud hosted full-stack pre-seeded application can be used via https://technologyblog.herokuapp.com/.
 
 ### License
-Further information regarding this specific license can be found via: https://opensource.org/license/mit/. 
-
+Further information regarding this specific license can be found via: https://opensource.org/license/mit/. <br>
 ![License Badge](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ### Contributing
